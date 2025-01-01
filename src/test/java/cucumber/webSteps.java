@@ -83,6 +83,7 @@ public class webSteps {
         driver.findElement(element).sendKeys(value);
 
         System.out.println("Test Comment");
+        System.out.println("Test Comment 01");
     }
 
     @When("I upload an image by clicking {String}")
