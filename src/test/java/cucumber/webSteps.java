@@ -81,6 +81,8 @@ public class webSteps {
         String value = getDatasetValue(text);
         scenario.log(text+" : "+value);
         driver.findElement(element).sendKeys(value);
+
+        System.out.println("Test");
     }
 
     @When("I upload an image by clicking {String}")
