@@ -10,7 +10,7 @@ Feature: Login to the system
   Scenario Outline: Verify login with valid credentials 2
 
     When I type "<username>" to the "Login_usernameField"
-    Then I type "<password>" to the "Login_pswFiel"
+    Then I type "<password>" to the "Login_pswField"
     And I click on "Login_btn"
 
 
