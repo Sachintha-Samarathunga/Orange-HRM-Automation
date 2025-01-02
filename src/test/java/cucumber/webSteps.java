@@ -84,6 +84,7 @@ public class webSteps {
 
         System.out.println("Test Comment");
         System.out.println("Test Comment 01");
+        System.out.println("Test Comment 02");
     }
 
     @When("I upload an image by clicking {String}")
