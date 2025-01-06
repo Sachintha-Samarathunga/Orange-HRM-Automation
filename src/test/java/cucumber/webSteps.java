@@ -6,6 +6,7 @@ import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
+import io.cucumber.plugin.event.Node;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
@@ -77,33 +78,18 @@ public class webSteps {
 
     @When("I type {string} to the {string}")
     public void iTypeToThe(String text, String locator) {
-        By element = constructElement(findElementRepo(locator));
         String value = getDatasetValue(text);
+        //If there is no value in dataset, get value from data store
+        if (value==null){
+            value = text;
+        }
+        By element = constructElement(findElementRepo(locator));
         scenario.log(text+" : "+value);
         driver.findElement(element).sendKeys(value);
 
         System.out.println("Test");
-    }
 
-    @When("I upload an image by clicking {String}")
-    public void uploadAnImage(String locator) throws InterruptedException, AWTException {
-        By element = constructElement(findElementRepo(locator));
-        driver.findElement(element).click();
-
-        Thread.sleep(3000);
-
-        StringSelection selection = new StringSelection("C:\\Users\\Sachintha\\Downloads\\sample.jpg");
-
-        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(selection, null);
-
-        Robot robot = new Robot();
-        robot.keyPress(KeyEvent.VK_CONTROL);
-        robot.keyPress(KeyEvent.VK_V);
-        robot.keyRelease(KeyEvent.VK_V);
-        robot.keyRelease(KeyEvent.VK_CONTROL);
-
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
+        System.out.println("Hello Sachintha");
     }
 
     @When("I check for success message {string} on the popup with locator {string}")
